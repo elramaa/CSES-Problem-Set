@@ -13,7 +13,7 @@ int main(){
 			cout << 6 << "\n";
 			continue;
 		}
-		cout << ((pow(i, 2) - 1)*pow(i, 2))/2 - 4*(pow(i-2, 2)+(i-2));
+		cout << (ll)(((pow(i, 2) - 1)*pow(i, 2))/2 - 4*(pow(i-2, 2)+(i-2)));
 		cout << "\n";
 	}
 	return 0;
