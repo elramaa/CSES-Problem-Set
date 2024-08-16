@@ -2,17 +2,25 @@
 using namespace std;
 
 int main(){
-	int n, m, k;
+	int n, m, k, temp;
 	int count = 0;
 	cin >> n >> m >> k;
-	int a[n], b[m];
-	for(int i = 0; i < n; ++i) cin >> a[i];
-	for(int i = 0; i < m; ++i) cin >> b[i];
+	multiset<int> a, b;
 	for(int i = 0; i < n; ++i){
-		for(int j = 0; j < m; j++){
-			if((b[j] - k) <= a[i] && a[i] <= (b[j] + k)){
-				b[j] = -1000;
-				count++;
+		cin >> temp;
+		a.insert(temp);
+	}
+	for(int i = 0; i < m; ++i){
+		cin >> temp;
+		b.insert(temp);
+	}
+	for(int i: a){
+		for(int j: b){
+			if(i - j > k) b.erase(b.find(j));
+			if(j - i > k) break;
+			if((j - k <= i) && (i <= j + k)){
+				b.erase(b.find(j));
+				count++;	
 				break;
 			}
 		}
